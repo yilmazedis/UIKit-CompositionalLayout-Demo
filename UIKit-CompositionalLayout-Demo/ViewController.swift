@@ -8,26 +8,35 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    lazy var collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: getCompositionalLayout())
+        view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
+        view.setCollectionViewLayout(getCompositionalLayout(), animated: false)
+        view.backgroundColor = .white
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
     }
     
     func setupCollectionView() {
-        let searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: getCompositionalLayout())
-        searchCollectionView.frame = self.view.frame
-        searchCollectionView.delegate = self
-        searchCollectionView.dataSource = self
-        searchCollectionView.backgroundColor = .white
-        searchCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
-        self.view.addSubview(searchCollectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        view.addSubview(collectionView)
     }
     
-    func getCompositionalLayout() -> UICollectionViewCompositionalLayout {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.frame = view.bounds
+    }
+    
+    private func getCompositionalLayout() -> UICollectionViewCompositionalLayout {
         
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1/3)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
-
 
         //--------- Group 1 ---------//
         let group1Item1 = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalHeight(1)))
@@ -46,13 +55,11 @@ class ViewController: UIViewController {
 
         let group1 = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1/3)), subitems: [group1Item1, nestedGroup1])
 
-
         //--------- Group 2 ---------//
         let group2Item1 = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(1)))
         group2Item1.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
 
         let group2 = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1/3)), subitems: [group2Item1])
-
 
         //--------- Container Group ---------//
         let containerGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(600)), subitems: [item, group1, group2])
@@ -61,9 +68,7 @@ class ViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
         
-        
         /*
-         
          //--------- Carousel ---------//
         let carouselItem = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95), heightDimension: .absolute(200)))
         carouselItem.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
@@ -82,7 +87,6 @@ class ViewController: UIViewController {
                 item.transform = CGAffineTransform(scaleX: scale, y: scale)
             }
         }
-        
         let layout = UICollectionViewCompositionalLayout(section: carouselSection)
         return layout
          */
@@ -116,7 +120,7 @@ extension UIColor {
 }
 
 extension UIView {
-    func add(view: UIView, left: CGFloat, right: CGFloat, top: CGFloat, bottom: CGFloat) {
+    func add(view: UIView, left: CGFloat = 0, right: CGFloat = 0, top: CGFloat = 0, bottom: CGFloat = 0) {
         
         view.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(view)
