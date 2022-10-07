@@ -13,6 +13,10 @@
 		0156B26128DBAAC400D8FAC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156B25F28DBAAC400D8FAC3 /* Main.storyboard */; };
 		0156B26328DBAAC600D8FAC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0156B26228DBAAC600D8FAC3 /* Assets.xcassets */; };
 		0156B26628DBAAC600D8FAC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156B26428DBAAC600D8FAC3 /* LaunchScreen.storyboard */; };
+		0196376828F0A1E80001174E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196376728F0A1E80001174E /* ImageCache.swift */; };
+		0196376A28F0A2010001174E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196376928F0A2010001174E /* ImageDownloader.swift */; };
+		0196376D28F0A2340001174E /* UIImage+Preload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196376C28F0A2340001174E /* UIImage+Preload.swift */; };
+		0196377028F0A4640001174E /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196376F28F0A4640001174E /* PhotoViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		0156B26228DBAAC600D8FAC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0156B26528DBAAC600D8FAC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0156B26728DBAAC600D8FAC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0196376728F0A1E80001174E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		0196376928F0A2010001174E /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		0196376C28F0A2340001174E /* UIImage+Preload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Preload.swift"; sourceTree = "<group>"; };
+		0196376F28F0A4640001174E /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,9 @@
 		0156B25828DBAAC400D8FAC3 /* UIKit-CompositionalLayout-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				0196376E28F0A4380001174E /* Cells */,
+				0196376B28F0A21D0001174E /* Extensions */,
+				0196376628F0A1CF0001174E /* Services */,
 				0156B25928DBAAC400D8FAC3 /* AppDelegate.swift */,
 				0156B25B28DBAAC400D8FAC3 /* SceneDelegate.swift */,
 				0156B25D28DBAAC400D8FAC3 /* ViewController.swift */,
@@ -65,6 +76,31 @@
 				0156B26728DBAAC600D8FAC3 /* Info.plist */,
 			);
 			path = "UIKit-CompositionalLayout-Demo";
+			sourceTree = "<group>";
+		};
+		0196376628F0A1CF0001174E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0196376728F0A1E80001174E /* ImageCache.swift */,
+				0196376928F0A2010001174E /* ImageDownloader.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0196376B28F0A21D0001174E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0196376C28F0A2340001174E /* UIImage+Preload.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0196376E28F0A4380001174E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0196376F28F0A4640001174E /* PhotoViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +175,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0156B25E28DBAAC400D8FAC3 /* ViewController.swift in Sources */,
+				0196377028F0A4640001174E /* PhotoViewCell.swift in Sources */,
+				0196376A28F0A2010001174E /* ImageDownloader.swift in Sources */,
 				0156B25A28DBAAC400D8FAC3 /* AppDelegate.swift in Sources */,
+				0196376D28F0A2340001174E /* UIImage+Preload.swift in Sources */,
+				0196376828F0A1E80001174E /* ImageCache.swift in Sources */,
 				0156B25C28DBAAC400D8FAC3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

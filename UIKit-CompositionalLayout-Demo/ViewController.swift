@@ -11,13 +11,13 @@ class ViewController: UIViewController {
     
     lazy var pagingCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: getPagingCompositionalLayout())
-        view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "pagingCollectionViewCell")
+        view.register(PhotoViewCell.self, forCellWithReuseIdentifier: "pagingCollectionViewCell")
         return view
     }()
     
     lazy var groupCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: getGroupCompositionalLayout())
-        view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "groupCollectionViewCell")
+        view.register(PhotoViewCell.self, forCellWithReuseIdentifier: "groupCollectionViewCell")
         return view
     }()
     
@@ -133,18 +133,22 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == pagingCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pagingCollectionViewCell", for: indexPath)
-            let imageView = UIImageView(frame: cell.frame)
-            imageView.image = UIImage(named: "\(indexPath.row + 1)")
-            imageView.contentMode = .scaleToFill
-            cell.backgroundColor = .random
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pagingCollectionViewCell",
+                                                                for: indexPath) as? PhotoViewCell else { return UICollectionViewCell() }
+//            let imageView = UIImageView(frame: cell.frame)
+//            imageView.image = UIImage(named: "\(indexPath.row + 1)")
+//            imageView.contentMode = .scaleToFill
+//            cell.backgroundColor = .random
+            cell.downloadImage()
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "groupCollectionViewCell", for: indexPath)
-            let imageView = UIImageView(frame: cell.frame)
-            imageView.image = UIImage(named: "\(indexPath.row + 1)")
-            imageView.contentMode = .scaleToFill
-            cell.backgroundColor = .random
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "groupCollectionViewCell", for: indexPath) as? PhotoViewCell else { return UICollectionViewCell() }
+            
+//            let imageView = UIImageView(frame: cell.frame)
+//            imageView.image = UIImage(named: "\(indexPath.row + 1)")
+//            imageView.contentMode = .scaleToFill
+//            cell.backgroundColor = .random
+            cell.downloadImage()
             return cell
         }
     }
