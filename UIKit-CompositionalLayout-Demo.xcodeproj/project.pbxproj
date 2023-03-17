@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014F09A629C518AA00E05465 /* PagingCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014F09A529C518AA00E05465 /* PagingCollectionViewDataSource.swift */; };
 		0156B25A28DBAAC400D8FAC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0156B25928DBAAC400D8FAC3 /* AppDelegate.swift */; };
 		0156B25C28DBAAC400D8FAC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0156B25B28DBAAC400D8FAC3 /* SceneDelegate.swift */; };
 		0156B25E28DBAAC400D8FAC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0156B25D28DBAAC400D8FAC3 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		014F09A529C518AA00E05465 /* PagingCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		0156B25628DBAAC400D8FAC3 /* UIKit-CompositionalLayout-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIKit-CompositionalLayout-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0156B25928DBAAC400D8FAC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0156B25B28DBAAC400D8FAC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				0156B25928DBAAC400D8FAC3 /* AppDelegate.swift */,
 				0156B25B28DBAAC400D8FAC3 /* SceneDelegate.swift */,
 				0156B25D28DBAAC400D8FAC3 /* ViewController.swift */,
+				014F09A529C518AA00E05465 /* PagingCollectionViewDataSource.swift */,
 				0156B25F28DBAAC400D8FAC3 /* Main.storyboard */,
 				0156B26228DBAAC600D8FAC3 /* Assets.xcassets */,
 				0156B26428DBAAC600D8FAC3 /* LaunchScreen.storyboard */,
@@ -181,6 +184,7 @@
 				0196376D28F0A2340001174E /* UIImage+Preload.swift in Sources */,
 				0196376828F0A1E80001174E /* ImageCache.swift in Sources */,
 				0156B25C28DBAAC400D8FAC3 /* SceneDelegate.swift in Sources */,
+				014F09A629C518AA00E05465 /* PagingCollectionViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

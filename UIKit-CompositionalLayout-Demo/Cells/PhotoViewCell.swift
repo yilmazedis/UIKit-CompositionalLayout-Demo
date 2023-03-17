@@ -76,7 +76,7 @@ class PhotoViewCell: UICollectionViewCell {
             guard let self = self else { return }
             
             if isCached {
-                self.imageView.image = image
+                self.imageView.image = UIImage(named: "myCode")
                 print("got from cache")
             } else {
                 UIView.transition(with: self, duration: 0.25, options: [.transitionCrossDissolve], animations: {

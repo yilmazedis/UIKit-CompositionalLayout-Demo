@@ -21,6 +21,9 @@ class ViewController: UIViewController {
         return view
     }()
     
+    // this line is just for testing
+    private let pagingDataSource = PagingCollectionViewDataSource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -30,6 +33,10 @@ class ViewController: UIViewController {
     func setupCollectionView() {
         pagingCollectionView.delegate = self
         pagingCollectionView.dataSource = self
+        
+//        pagingCollectionView.collectionViewLayout = pagingDataSource
+//        pagingCollectionView.delegate = pagingDataSource
+//        pagingCollectionView.dataSource = pagingDataSource
         
         groupCollectionView.delegate = self
         groupCollectionView.dataSource = self
