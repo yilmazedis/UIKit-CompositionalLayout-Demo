@@ -14,30 +14,29 @@ class ImageDownloader {
 
     func downloadPhoto(with url: URL, completion: @escaping ((UIImage?, Bool) -> Void)) {
 
-        if let cachedResponse = cache.cachedResponse(for: URLRequest(url: url)),
-            let image = UIImage(data: cachedResponse.data) {
+        if let data = ImageCache.imageData(for: url),
+            let image = UIImage(data: data) {
             completion(image, true)
             return
         }
 
         imageDataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let strongSelf = self else { return }
-            strongSelf.imageDataTask = nil
+            self?.imageDataTask = nil
 
-            guard let data = data, let response = response, let image = UIImage(data: data), error == nil else { return }
+            guard let data = data,
+                  let response = response,
+                  let image = UIImage(data: data),
+                  error == nil
+            else { return }
 
-            let cachedResponse = CachedURLResponse(response: response, data: data)
-            strongSelf.cache.storeCachedResponse(cachedResponse, for: URLRequest(url: url))
+            ImageCache.storeImageData(data: data, response: response, for: url)
 
             // Decode the JPEG image in a background thread
             DispatchQueue.global(qos: .userInteractive).async {
                 let decodedImage = image.preloadedImage()
-                DispatchQueue.main.async {
-                    completion(decodedImage, false)
-                }
+                completion(decodedImage, false)
             }
         }
-
         imageDataTask?.resume()
     }
 

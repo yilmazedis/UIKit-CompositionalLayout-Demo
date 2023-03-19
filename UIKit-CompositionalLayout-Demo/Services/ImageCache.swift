@@ -28,10 +28,18 @@ class ImageCache {
             )
         }
     }()
+    
+    static func storeImageData(data: Data, response: URLResponse, for url: URL) {
+        let cachedResponse = CachedURLResponse(response: response, data: data)
+        cache.storeCachedResponse(cachedResponse, for: URLRequest(url: url))
+    }
 
-    static let memoryCapacity: Int = 50.megabytes
-    static let diskCapacity: Int = 100.megabytes
+    static func imageData(for url: URL) -> Data? {
+        return cache.cachedResponse(for: URLRequest(url: url))?.data
+    }
 
+    static let memoryCapacity: Int = 200.megabytes
+    static let diskCapacity: Int = 400.megabytes
 }
 
 private extension Int {
